@@ -1,7 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import { reactRouter } from "@react-router/dev/vite";
+import devtoolsJson from "vite-plugin-devtools-json";
+import pandacss from "@pandacss/dev/postcss";
+import autoprefixer from "autoprefixer";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  css: {
+    postcss: {
+      plugins: [pandacss, autoprefixer],
+    },
+  },
+  plugins: [reactRouter(), devtoolsJson()],
+});
